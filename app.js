@@ -17,7 +17,7 @@ app.use("/", apiRouter);
 // connect port
 const port = process.env.PORT;
 
-app.listen(port, () => {
+app.listen(port,"0.0.0.0", () => {
   console.log(`API is running on port:http:/localhost:${port}`);
 });
 
