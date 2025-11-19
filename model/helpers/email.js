@@ -6,21 +6,21 @@ dotenv.config();
 export const emailBookingDetails = async (data) => {
   try {
     const transporter = nodemailer.createTransport({
-  host: "smtp.gmail.com",
-  port: 465,
-  secure: true,
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
-  },
-  connectionTimeout: 20000,
-});
-
-    await transporter.verify();
+      host: process.env.BREVO_HOST,
+      port: Number(process.env.BREVO_PORT), // 587
+      secure: false, // Brevo works on STARTTLS
+      auth: {
+        user: process.env.BREVO_USER,
+        pass: process.env.BREVO_PASS,
+      },
+      tls: {
+        rejectUnauthorized: false,
+      },
+    });
 
     const mailOptions = {
-      from: process.env.EMAIL_USER,
-      to: process.env.EMAIL_USER,
+      from: process.env.BREVO_USER,
+      to: process.env.EMAIL_TO,
       subject: "New Contact Message",
       html: `
         <h2>New Contact Request</h2>
@@ -34,9 +34,9 @@ export const emailBookingDetails = async (data) => {
     };
 
     await transporter.sendMail(mailOptions);
-    console.log("Email sent!");
+    console.log("Brevo Email Sent!");
   } catch (error) {
-    console.log("Email Error:", error);
+    console.log("Brevo Email Error:", error.message);
   }
 };
 
