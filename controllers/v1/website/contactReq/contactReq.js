@@ -1,4 +1,3 @@
-// import BookingReq from "../../../../model/bookingReqModel.js";
 import ContactReq from "../../../../model/contactReqModel.js";
 import emailBookingDetails from "../../../../model/helpers/email.js";
 import MESSAGES from "../../../../model/helpers/messagehelper.js";
