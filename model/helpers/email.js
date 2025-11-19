@@ -7,10 +7,10 @@ export const emailBookingDetails = async (data) => {
   try {
     const transporter = nodemailer.createTransport({
       host: process.env.BREVO_HOST,
-      port: Number(process.env.BREVO_PORT), // 587
-      secure: false, // Brevo works on STARTTLS
+      port: 587,
+      secure: false,
       auth: {
-        user: process.env.BREVO_USER,
+        user: process.env.BREVO_USER, 
         pass: process.env.BREVO_PASS,
       },
       tls: {
@@ -19,7 +19,7 @@ export const emailBookingDetails = async (data) => {
     });
 
     const mailOptions = {
-      from: process.env.BREVO_USER,
+      from: process.env.FROM_EMAIL,      // <-- IMPORTANT (verified sender)
       to: process.env.EMAIL_TO,
       subject: "New Contact Message",
       html: `
@@ -40,4 +40,5 @@ export const emailBookingDetails = async (data) => {
   }
 };
 
-export default emailBookingDetails;   // <-- IMPORTANT
+export default emailBookingDetails;
+
