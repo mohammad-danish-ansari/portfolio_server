@@ -17,10 +17,10 @@ app.use("/", apiRouter);
 // connect port
 const port = process.env.PORT;
 
-app.listen(port,"0.0.0.0", () => {
+app.listen(port, () => {
   console.log(`API is running on port:http:/localhost:${port}`);
 });
-
+// "0.0.0.0"
 // DataBase Connected
 const DATABASE_URL = process.env.DATABASE_URL;
 connecteDb(DATABASE_URL);

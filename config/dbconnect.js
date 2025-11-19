@@ -1,18 +1,22 @@
 import mongoose from "mongoose";
 
-const connectDb = (async (DATABASE_URL) => {
-    try {
-      
-        await mongoose.connect(DATABASE_URL)
-        console.log(`Database connected successfully`)
-    }
+const connectDb = async (DATABASE_URL) => {
+  try {
+    await mongoose.connect(DATABASE_URL, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      serverSelectionTimeoutMS: 5000, // Wait 5 sec for MongoDB response
+    });
 
-    catch (error) {
-        console.log(error);
+    console.log(`✅ Database connected successfully`);
+  } catch (error) {
+    console.log("❌ MongoDB Connection Error:");
+    console.log(error.message);
+  }
+};
 
-    }
-})
-export default connectDb
+export default connectDb;
+
 // import mongoose from "mongoose";
 
 // const connectDb = async (DATABASE_URL) => {
