@@ -44,7 +44,7 @@ export const createContactBooking = async (req, res) => {
       message: req.body.message,
     });
     await newBooking.save();
-    await emailBookingDetails(newBooking);
+     emailBookingDetails(newBooking);
     return res.status(MESSAGES.rescode.HTTP_CREATE).json({
       message: MESSAGES.apiSuccessStrings.ADDED("Your Message"),
       data: {

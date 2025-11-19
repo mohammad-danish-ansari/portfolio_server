@@ -5,12 +5,12 @@ const connectDb = async (DATABASE_URL) => {
     await mongoose.connect(DATABASE_URL, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
-      serverSelectionTimeoutMS: 5000, // Wait 5 sec for MongoDB response
+      serverSelectionTimeoutMS: 5000,
     });
 
-    console.log(`✅ Database connected successfully`);
+    console.log(` Database connected successfully`);
   } catch (error) {
-    console.log("❌ MongoDB Connection Error:");
+    console.log(" MongoDB Connection Error:");
     console.log(error.message);
   }
 };
