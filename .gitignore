@@ -10,9 +10,9 @@
 /node_modules
 npm-debug.log
 yarn-error.log
+.env
 
 # IDEs and editors
-.env
 .idea/
 .project
 .classpath
